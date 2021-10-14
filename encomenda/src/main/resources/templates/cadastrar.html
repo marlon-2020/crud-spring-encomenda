@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleAll.css">
+    <link rel="stylesheet" href="styleInput.css">
+    <title>Cadastrar</title>
+</head>
+<body>
+    <div class="all">
+        <header>
+            <h1>Tela de Cadastro</h1>
+        </header>
+        <main>
+            <form action="#" th:action="@{/cadastrar}" method="POST" th:object="${cadastro}" enctype="multipart/form-data">
+                <div class="input-data-container">
+                    <input type="hidden" name="id" th:field="*{id}" th:text="*{id}">
+                    <label for="nome">Nome:</label> <p><input type="text" name="nome" th:field="*{nome}" th:text="*{nome}" id="nome" placeholder="Digite o seu nome..."></p>
+                    <label for="cpf">CPF:</label><p><input type="text" name="cpf" id="cpf" th:text="*{cpf}" placeholder="Digite o seu CPF..."></p>
+                    <label for="senha">Senha:</label> <p><input type="password" id="senha" th:text="*{senha}" name="senha"></p>
+                    <label for="repete">Repita a senha:</label><p><input type="password" id="repete" name="repete"></p>
+                </div>
+                <div class="select-container">Selecione a sua contribuição: 
+                    <select name="comida"> 
+                        <option  th:each="comida : ${T(br.com.mvcomida.encomenda.model.Comida).values()}" 
+                        th:value="${comida}" th:text="${comida.descricao}"></option>
+                    </select>
+                </div>
+                <div class="input-btns-container">
+                    <input type="reset" value="Reseta" class="reseta">
+                    <input type="submit" value="Confirma" class="confirma">
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

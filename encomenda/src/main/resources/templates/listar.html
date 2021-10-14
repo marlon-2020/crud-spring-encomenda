@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <title>Bem-Vindo!</title>
+</head>
+<body>
+    <h1>Lista detalhada das escolhas</h1>
+    <h2>Segue a lista de cada colaborador e sua parte no café da manhã</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Nome do Colaborador</th><th>CPF</th><th>Comida Escolhida</th><th>EDITAR</th><th>EXCLUIR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${cadastro.empty}">
+                <td>vazio</td><td>vazio</td><td>vazio</td><td>vazio</td><td>vazio</td><td>vazio</td>
+            </tr>
+            <tr th:each="cad : ${cadastro}">
+                <td th:text="${cad.id}"></td><td th:text="${cad.nome}"></td><td th:text="${cad.cpf}"></td><td th:text="${cad.comida.descricao}"></td>
+                <td>
+                    <form th:action="@{/editar/details?id={id}(id=${cad.id})}" method="post">
+                        <input type="submit" value="Editar">
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/deletar/details?id={id}(id=${cad.id})}" method="post">
+                        <input type="submit" value="Deletar">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
