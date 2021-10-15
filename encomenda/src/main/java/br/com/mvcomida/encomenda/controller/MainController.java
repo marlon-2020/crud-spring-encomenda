@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Optional;
+
 @Controller
 public class MainController {
     @Autowired
@@ -51,10 +53,12 @@ public class MainController {
         return new RedirectView("/listar");
     }
 
-    @PostMapping("/editar/details")
+    @RequestMapping(value = "/editar/details", method = RequestMethod.POST)
     @ResponseBody
     public RedirectView editarCadastro(@RequestParam(defaultValue = "id") int id, Model model) {
-        model.addAttribute("cadastro", cadastroDao.findById(id));
+        //int key = Integer.parseInt(id);
+        model.addAttribute("cadastro", cadastroDao.getById(id));
+        System.out.println(model);
         return new RedirectView("/cadastrar");
     }
 }

@@ -14,12 +14,12 @@
             <h1>Tela de Cadastro</h1>
         </header>
         <main>
-            <form action="#" th:action="@{/cadastrar}" method="POST" th:object="${cadastro}" enctype="multipart/form-data">
+            <form action="#" th:action="@{/cadastrar}" method="POST" th:object="${cadastro}" th:each="cad:${cadastro}" enctype="multipart/form-data">
                 <div class="input-data-container">
-                    <input type="hidden" name="id" th:field="*{id}" th:text="*{id}">
-                    <label for="nome">Nome:</label> <p><input type="text" name="nome" th:field="*{nome}" th:text="*{nome}" id="nome" placeholder="Digite o seu nome..."></p>
-                    <label for="cpf">CPF:</label><p><input type="text" name="cpf" id="cpf" th:text="*{cpf}" placeholder="Digite o seu CPF..."></p>
-                    <label for="senha">Senha:</label> <p><input type="password" id="senha" th:text="*{senha}" name="senha"></p>
+                    <input type="hidden" name="id" th:field="*{id}" th:value="${cad.id}">
+                    <label for="nome">Nome:</label> <p><input type="text" name="nome" th:field="*{nome}" th:value="${cad.nome}" id="nome" placeholder="Digite o seu nome..."></p>
+                    <label for="cpf">CPF:</label><p><input type="text" name="cpf" id="cpf" th:value="${cad.cpf}" placeholder="Digite o seu CPF..."></p>
+                    <label for="senha">Senha:</label> <p><input type="password" th:value="${cad.senha}" id="senha" name="senha"></p>
                     <label for="repete">Repita a senha:</label><p><input type="password" id="repete" name="repete"></p>
                 </div>
                 <div class="select-container">Selecione a sua contribuição: 

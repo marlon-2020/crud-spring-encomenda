@@ -1,0 +1,32 @@
+:root{
+    --azul:rgb(14,85,118,0.5);
+    --verde:rgb(0,145,132,0.5);
+}
+table{
+    text-align: center;
+    background-color:var(--azul);
+    margin:auto;
+    border-radius:5px;
+}
+button{
+    border:1px solid black;
+    background-color:var(--azul);
+}
+button:hover{
+    background-color:var(--verde);
+    cursor: pointer;
+}
+img.editar, img.deletar{
+    width: 50px;
+    height: 50px;
+}
+@media only screen and (max-width: 784px) {
+    table{
+        width:100%;
+        font-size:13px;
+    }
+    img.deletar,img.editar{
+        width:25px;
+        height:25px;
+    }
+}
